@@ -24,19 +24,19 @@ class EnvParams:
 
 
 map = """
-xxxxxxxx
-x      x
-x      x
-x      x
-x      x
-x      x
-x      x
-x      x
-x      x
-x      x
-x      x
-x      x
-xxxxxxxx"""
+xxxxxxxxx
+x       x
+x       x
+x       x
+x       x
+x       x
+x       x
+x       x
+x       x
+x       x
+x       x
+x       x
+xxxxxxxxx"""
 
 def string_to_bool_map(str_map: str) -> chex.Array:
     """Convert string map into boolean walking map."""
@@ -98,10 +98,15 @@ class Empty(environment.Environment):
             new_pos[0] == state.goal[0], new_pos[1] == state.goal[1]
         )
 
-        # Caculate the disocunted return
-        discounted_reward = normal_reward - 0.9 *( state.time / params.max_steps_in_episode)
+        # Calculate the discounted return, but only if the goal position is found
+        discounted_reward = jax.lax.cond(
+            jnp.logical_and(params.discounted_reward, normal_reward),
+            lambda: normal_reward - 0.9 * (state.time / params.max_steps_in_episode),
+            lambda: jnp.float32(0.0)
+        )
 
         reward = jax.lax.cond(params.discounted_reward, lambda: discounted_reward, lambda: jnp.float32(normal_reward))
+
         # Update state dict and evaluate termination conditions
         state = EnvState(new_pos, state.goal, state.time + 1)
         done = self.is_terminal(state, params)
