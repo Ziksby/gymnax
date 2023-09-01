@@ -34,6 +34,7 @@ from .misc import (
     Reacher,
     Swimmer,
     Pong,
+    Empty,
 )
 
 
@@ -65,4 +66,5 @@ __all__ = [
     "Reacher",
     "Swimmer",
     "Pong",
+    "Empty",
 ]
