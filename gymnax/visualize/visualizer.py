@@ -110,7 +110,7 @@ class Visualizer(object):
             update_minatar(self.im, self.env, self.state_seq[frame])
         elif self.env.name == "PointRobot-misc":
             self.im = update_circle(self.im, self.env, self.state_seq[frame])
-        elif self.env.name in ["MetaMaze-misc", "FourRooms-misc"]:
+        elif self.env.name in ["MetaMaze-misc", "FourRooms-misc", "Empty-misc"]:
             self.im = update_maze(self.im, self.env, self.state_seq[frame])
 
         if self.reward_seq is None:

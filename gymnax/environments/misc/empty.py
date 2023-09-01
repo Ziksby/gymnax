@@ -46,7 +46,7 @@ def string_to_bool_map(str_map: str) -> chex.Array:
     return jnp.array(bool_map)
 
 
-class FourRooms(environment.Environment):
+class Empty(environment.Environment):
     """
     JAX Compatible version of the empty environmentts
     """
