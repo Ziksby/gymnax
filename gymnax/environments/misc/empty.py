@@ -58,7 +58,7 @@ class Empty(environment.Environment):
         pos_fixed: List[int] = [4, 1],
     ):
         super().__init__()
-        self.env_map = string_to_bool_map(four_rooms_map)
+        self.env_map = string_to_bool_map(map)
         self.occupied_map = 1 - self.env_map
         coords = []
         for y in range(self.env_map.shape[0]):

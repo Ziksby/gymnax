@@ -24,7 +24,7 @@ from .environments import (
     Reacher,
     Swimmer,
     Pong,
-    Empty
+    Empty,
 )
 
 # =============================================================================
@@ -128,5 +128,5 @@ registered_envs = [
     "Reacher-misc",
     "Swimmer-misc",
     "Pong-misc",
-    "Empty-misc"
+    "Empty-misc",
 ]
