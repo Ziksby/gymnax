@@ -24,6 +24,7 @@ from .environments import (
     Reacher,
     Swimmer,
     Pong,
+    Empty
 )
 
 # =============================================================================
@@ -92,6 +93,8 @@ def make(env_id: str, **env_kwargs):
         env = Swimmer(**env_kwargs)
     elif env_id == "Pong-misc":
         env = Pong(**env_kwargs)
+    elif env_id == "Empty-misc":
+        env = Empty(**env_kwargs)
     else:
         raise ValueError("Environment ID is not registered.")
 
@@ -125,4 +128,5 @@ registered_envs = [
     "Reacher-misc",
     "Swimmer-misc",
     "Pong-misc",
+    "Empty-misc"
 ]
