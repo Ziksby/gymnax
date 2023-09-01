@@ -19,7 +19,7 @@ class EnvParams:
     resample_init_pos: bool = False
     resample_goal_pos: bool = False
     discounted_reward: bool = False
-    max_steps_in_episode: int = 500
+    max_steps_in_episode: int = 200
 
 
 
@@ -54,8 +54,8 @@ class Empty(environment.Environment):
     def __init__(
         self,
         use_visual_obs: bool = False,
-        goal_fixed: List[int] = [6, 7],
-        pos_fixed: List[int] = [4, 1],
+        goal_fixed: List[int] = [5, 6],
+        pos_fixed: List[int] = [2, 1],
     ):
         super().__init__()
         self.env_map = string_to_bool_map(map)

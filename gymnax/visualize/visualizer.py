@@ -82,7 +82,7 @@ class Visualizer(object):
             self.im = init_circle(
                 self.ax, self.env, self.state_seq[0], self.env_params
             )
-        elif self.env.name in ["MetaMaze-misc", "FourRooms-misc"]:
+        elif self.env.name in ["MetaMaze-misc", "FourRooms-misc","Empty-misc"]:
             self.im = init_maze(
                 self.ax, self.env, self.state_seq[0], self.env_params
             )
