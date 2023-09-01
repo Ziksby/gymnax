@@ -18,7 +18,7 @@ class EnvState:
 class EnvParams:
     resample_init_pos: bool = False
     resample_goal_pos: bool = False
-    discounted_reward: bool = False
+    discounted_reward: bool = True
     max_steps_in_episode: int = 200
 
 
@@ -162,7 +162,7 @@ class Empty(environment.Environment):
     @property
     def name(self) -> str:
         """Environment name."""
-        return "FourRooms-misc"
+        return "Empty-misc"
 
     @property
     def num_actions(self) -> int:
