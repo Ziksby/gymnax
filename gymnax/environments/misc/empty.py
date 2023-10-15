@@ -19,24 +19,27 @@ class EnvParams:
     resample_init_pos: bool = False
     resample_goal_pos: bool = False
     discounted_reward: bool = True
-    max_steps_in_episode: int = 200
+    max_steps_in_episode: int = 16*16*4
 
 
 
 map = """
-xxxxxxxxx
-x       x
-x       x
-x       x
-x       x
-x       x
-x       x
-x       x
-x       x
-x       x
-x       x
-x       x
-xxxxxxxxx"""
+xxxxxxxxxxxxxxxx
+x              x
+x              x
+x              x
+x              x
+x              x
+x              x
+x              x
+x              x
+x              x
+x              x
+x              x
+x              x
+x              x
+x              x
+xxxxxxxxxxxxxxxx"""
 
 def string_to_bool_map(str_map: str) -> chex.Array:
     """Convert string map into boolean walking map."""
@@ -54,8 +57,8 @@ class Empty(environment.Environment):
     def __init__(
         self,
         use_visual_obs: bool = False,
-        goal_fixed: List[int] = [5, 6],
-        pos_fixed: List[int] = [2, 1],
+        goal_fixed: List[int] = [1, 14],
+        pos_fixed: List[int] = [14, 1],
     ):
         super().__init__()
         self.env_map = string_to_bool_map(map)
@@ -183,7 +186,7 @@ class Empty(environment.Environment):
     def observation_space(self, params: EnvParams) -> spaces.Box:
         """Observation space of the environment."""
         if self.use_visual_obs:
-            return spaces.Box(0, 1, (8, 8, 2), jnp.float32)
+            return spaces.Box(0, 1, (16, 16, 2), jnp.float32)
         else:
             return spaces.Box(
                 jnp.min(self.coords), jnp.max(self.coords), (4,), jnp.float32
