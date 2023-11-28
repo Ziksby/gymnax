@@ -57,7 +57,7 @@ class Empty(environment.Environment):
     def __init__(
         self,
         use_visual_obs: bool = False,
-        goal_fixed: List[int] = [14, 14],
+        goal_fixed: List[int] = [1, 14],
         pos_fixed: List[int] = [14, 1],
     ):
         super().__init__()

@@ -34,7 +34,7 @@ class DeepSea(environment.Environment):
     github.com/deepmind/bsuite/blob/master/bsuite/environments/deep_sea.py
     """
 
-    def __init__(self, size: int = 8):
+    def __init__(self, size: int = 10):
         super().__init__()
         self.size = size
         self.action_mapping = jnp.ones([size, size])

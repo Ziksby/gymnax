@@ -18,7 +18,7 @@ class EnvState:
 class EnvParams:
     fail_prob: float = 1.0 / 3
     resample_init_pos: bool = False
-    resample_goal_pos: bool = False
+    resample_goal_pos: bool = True
     discounted_reward: bool = False
     max_steps_in_episode: int = 500
 
