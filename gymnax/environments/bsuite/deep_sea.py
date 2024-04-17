@@ -25,7 +25,7 @@ class EnvParams:
     sample_action_map: bool = False
     unscaled_move_cost: float = 0.01
     randomize_actions: bool = False
-    max_steps_in_episode: int = 2000
+    max_steps_in_episode: int = 10
 
 
 class DeepSea(environment.Environment):
