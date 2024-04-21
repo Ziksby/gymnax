@@ -21,7 +21,7 @@ class EnvParams:
     discounted_reward: bool = True
     max_steps_in_episode: int = 16*16*4
 
-
+# 16 x 16
 
 map = """
 xxxxxxxxxxxxxxxx
