@@ -114,7 +114,7 @@ class FourRooms(environment.Environment):
             lambda: jnp.float64(0.0)
         )
 
-        reward = jax.lax.cond(params.discounted_reward, lambda: discounted_reward, lambda: jnp.float32(normal_reward))
+        reward = jax.lax.cond(params.discounted_reward, lambda: discounted_reward, lambda: jnp.float64(normal_reward))
 
         # Update state dict and evaluate termination conditions
         state = EnvState(new_pos, state.goal, state.time + 1)
@@ -192,10 +192,10 @@ class FourRooms(environment.Environment):
     def observation_space(self, params: EnvParams) -> spaces.Box:
         """Observation space of the environment."""
         if self.use_visual_obs:
-            return spaces.Box(0, 1, (13, 13, 2), jnp.float32)
+            return spaces.Box(0, 1, (13, 13, 2), jnp.float64)
         else:
             return spaces.Box(
-                jnp.min(self.coords), jnp.max(self.coords), (4,), jnp.float32
+                jnp.min(self.coords), jnp.max(self.coords), (4,), jnp.float64
             )
 
     def state_space(self, params: EnvParams) -> spaces.Dict:
@@ -206,13 +206,13 @@ class FourRooms(environment.Environment):
                     jnp.min(self.coords),
                     jnp.max(self.coords),
                     (2,),
-                    jnp.float32,
+                    jnp.float64,
                 ),
                 "goal": spaces.Box(
                     jnp.min(self.coords),
                     jnp.max(self.coords),
                     (2,),
-                    jnp.float32,
+                    jnp.float64,
                 ),
                 "time": spaces.Discrete(params.max_steps_in_episode),
             }
