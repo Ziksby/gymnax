@@ -105,7 +105,7 @@ class Empty(environment.Environment):
         discounted_reward = jax.lax.cond(
             jnp.logical_and(params.discounted_reward, normal_reward),
             lambda: normal_reward - 0.9 * (state.time / params.max_steps_in_episode),
-            lambda: jnp.float32(0.0)
+            lambda: jnp.float64(0.0)
         )
 
         reward = jax.lax.cond(params.discounted_reward, lambda: discounted_reward, lambda: jnp.float32(normal_reward))
