@@ -108,7 +108,7 @@ class Empty(environment.Environment):
             lambda: jnp.float64(0.0)
         )
 
-        reward = jax.lax.cond(params.discounted_reward, lambda: discounted_reward, lambda: jnp.float32(normal_reward))
+        reward = jax.lax.cond(params.discounted_reward, lambda: discounted_reward, lambda: jnp.float64(normal_reward))
 
         # Update state dict and evaluate termination conditions
         state = EnvState(new_pos, state.goal, state.time + 1)
